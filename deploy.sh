@@ -21,7 +21,7 @@ npm run deploy
 
 if [ $? -eq 0 ]; then
     echo "✅ Deployment successful!"
-    echo "🎉 Your site will be available at: https://YOUR_USERNAME.github.io/site/"
+    echo "🎉 Your site will be available at: https://jametsu.github.io/angular-site/"
 else
     echo "❌ Deployment failed!"
     exit 1

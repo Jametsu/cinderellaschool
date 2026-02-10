@@ -5,10 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build --configuration production --base-href /site/",
+    "build:prod": "ng build --configuration production --base-href /angular-site/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng deploy --base-href=/site/"
+    "deploy": "ng deploy --base-href=/angular-site/"
   },
   "prettier": {
     "printWidth": 100,
