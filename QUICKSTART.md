@@ -11,17 +11,17 @@ Ensure you have the following installed:
 
 ### 1. Node.js Setup
 
-Switch to Node.js 23.5.0 using nvm:
+Switch to Node.js 22.22.0 LTS using nvm:
 
 ```bash
-nvm use 23.5.0
+nvm use 22.22.0
 ```
 
-If you don't have Node 23.5.0 installed:
+If you don't have Node 22.22.0 installed:
 
 ```bash
-nvm install 23.5.0
-nvm use 23.5.0
+nvm install 22.22.0
+nvm use 22.22.0
 ```
 
 ### 2. Install Dependencies
@@ -173,9 +173,13 @@ providePrimeNG({
 
 ## Troubleshooting
 
-### Node Version Warnings
+### Node Version
 
-If you see warnings about Node 23.5.0 being unsupported, these are informational only. The app will still work. For production, consider using Node 22.x (LTS).
+Node.js 22.22.0 LTS is fully supported with no warnings. If you see any issues, ensure you're using the correct version:
+
+```bash
+node --version  # Should show v22.22.0
+```
 
 ### Build Errors
 

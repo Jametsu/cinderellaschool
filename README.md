@@ -6,14 +6,14 @@ A modern Angular application with PrimeNG components, featuring a product catalo
 
 - **Angular 21.1** - Latest version with standalone components
 - **PrimeNG** - Rich UI component library
-- **Node.js 23.5.0** - Using nvm for version management
+- **Node.js 22.22.0 LTS** - Latest LTS version for production use
 - **Backend** - Simple JSON files for data storage
 - **Deployment** - GitHub Pages with angular-cli-ghpages
 
 ## Prerequisites
 
-- Node.js 23.5.0 (managed via nvm)
-- npm 10.9.2
+- Node.js 22.22.0 LTS (managed via nvm)
+- npm 10.9.4
 - Git
 
 ## Setup Instructions
@@ -142,9 +142,9 @@ Available themes: lara-light-blue, lara-dark-blue, md-light-indigo, etc.
 
 ## Development Notes
 
-- Node.js 23.5.0 shows warnings as it's an odd-numbered version (not LTS)
-- The warnings are informational and don't affect functionality
-- Consider using Node.js 22.x (LTS) for production environments
+- Node.js 22.22.0 is the latest LTS (Long Term Support) version
+- Fully supported by Angular 21 with no warnings
+- Recommended for both development and production environments
 
 ## License
 

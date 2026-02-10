@@ -27,7 +27,8 @@ A modern, production-ready Angular website with PrimeNG components, configured f
 - Proper base href configuration
 
 ✅ **Developer Experience**
-- Node.js 23.5.0 via nvm
+- Node.js 22.22.0 LTS (latest stable)
+- Zero warnings during build
 - Hot module reloading
 - TypeScript strict mode
 - Comprehensive documentation
@@ -41,8 +42,8 @@ A modern, production-ready Angular website with PrimeNG components, configured f
 | @primeuix/themes | 2.0.4 | Theme system |
 | PrimeIcons | 7.0.0 | Icon library |
 | TypeScript | 5.9.2 | Type-safe JavaScript |
-| Node.js | 23.5.0 | Runtime environment |
-| npm | 10.9.2 | Package manager |
+| Node.js | 22.22.0 LTS | Runtime environment |
+| npm | 10.9.4 | Package manager |
 | angular-cli-ghpages | 3.0.2 | GitHub Pages deployment |
 
 ## Project Structure
@@ -206,8 +207,8 @@ The application supports:
 
 - **Initial Load**: ~205 KB (gzipped)
 - **Lazy Loaded**: Browser chunk (18 KB)
-- **Build Time**: ~60-80 seconds
-- **Dev Server Start**: ~35 seconds
+- **Build Time**: ~14 seconds (with Node 22 LTS)
+- **Dev Server Start**: ~15 seconds
 
 ## Extensibility
 
