@@ -33,8 +33,17 @@
    - Click "Add Property"
    - Enter: `https://jametsu.github.io/cinderellaschool/`
 
-3. **Verify ownership:**
-   - Choose HTML tag method
+3. **Verify ownership (2 methods):**
+   
+   **Method 1: HTML file (Recommended - Already Set Up!):**
+   - Choose "HTML file" method
+   - Google will give you a file like `google8a7a4f8ed343fed2.html`
+   - ✅ **Already done!** Your verification file is in `public/` folder
+   - After deployment, verify at: `https://jametsu.github.io/cinderellaschool/google8a7a4f8ed343fed2.html`
+   - Click "Verify" in Search Console
+   
+   **Method 2: HTML tag (Alternative):**
+   - Choose "HTML tag" method
    - Google will give you a meta tag like:
      ```html
      <meta name="google-site-verification" content="YOUR_CODE_HERE">
@@ -197,7 +206,8 @@ Your site is now optimized for:
 ## 📞 Quick Checklist
 
 After deployment:
-- [ ] Add Google verification tag to index.html
+- [✅] Google verification file added to `public/` folder (`google8a7a4f8ed343fed2.html`)
+- [ ] Verify site ownership in Google Search Console
 - [ ] Submit sitemap to Google Search Console
 - [ ] Create Google Business Profile
 - [ ] Add site to social media profiles

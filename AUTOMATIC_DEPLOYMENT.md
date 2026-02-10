@@ -116,6 +116,46 @@ The workflow has these permissions:
 
 These are safe and standard for GitHub Pages deployment.
 
+## 📄 Static Files & Google Verification
+
+### Adding Static Files to Deployment
+
+All files in the `public/` folder are automatically included in the deployment:
+- `public/favicon.ico` - Site icon
+- `public/robots.txt` - Search engine instructions
+- `public/sitemap.xml` - Site structure for SEO
+- `public/google8a7a4f8ed343fed2.html` - Google Search Console verification
+
+### Adding Google Verification File
+
+To verify your site with Google Search Console:
+
+1. Place your verification file in the `public/` folder:
+   ```bash
+   # Example: google8a7a4f8ed343fed2.html
+   mv google8a7a4f8ed343fed2.html public/
+   ```
+
+2. Push to GitHub:
+   ```bash
+   git add public/google8a7a4f8ed343fed2.html
+   git commit -m "Add Google verification file"
+   git push origin main
+   ```
+
+3. After deployment (1-2 minutes), your verification file will be accessible at:
+   ```
+   https://jametsu.github.io/cinderellaschool/google8a7a4f8ed343fed2.html
+   ```
+
+4. Go to Google Search Console and click "Verify"
+
+### Other Static Files
+
+Any file you add to `public/` will be deployed to the root of your site:
+- `public/myfile.txt` → `https://jametsu.github.io/cinderellaschool/myfile.txt`
+- `public/ads.txt` → `https://jametsu.github.io/cinderellaschool/ads.txt`
+
 ## 🐛 Troubleshooting
 
 ### Deployment Failed
