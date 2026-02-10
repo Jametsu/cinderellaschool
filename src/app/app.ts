@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Button } from 'primeng/button';
@@ -6,7 +6,7 @@ import { Card } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
 import { Tag } from 'primeng/tag';
-import { DataService, Product, User } from './services/data.service';
+import { DataService, Course, DaySchedule, SchoolInfo } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -29,37 +29,70 @@ import { DataService, Product, User } from './services/data.service';
 export class App implements OnInit {
   private dataService = inject(DataService);
   
-  title = 'Angular Site with PrimeNG';
-  products: Product[] = [];
-  users: User[] = [];
+  isDarkMode = signal(false);
+  schoolInfo: SchoolInfo | null = null;
+  courses: Course[] = [];
+  schedule: DaySchedule[] = [];
   loading = true;
 
   ngOnInit() {
     this.loadData();
+    this.checkSystemTheme();
   }
 
   loadData() {
     this.loading = true;
-    this.dataService.getProducts().subscribe({
+    
+    this.dataService.getSchoolInfo().subscribe({
       next: (data) => {
-        this.products = data;
+        this.schoolInfo = data;
       },
-      error: (err) => console.error('Error loading products:', err)
+      error: (err) => console.error('Error loading school info:', err)
     });
 
-    this.dataService.getUsers().subscribe({
+    this.dataService.getCourses().subscribe({
       next: (data) => {
-        this.users = data;
+        this.courses = data;
+      },
+      error: (err) => console.error('Error loading courses:', err)
+    });
+
+    this.dataService.getSchedule().subscribe({
+      next: (data) => {
+        this.schedule = data;
         this.loading = false;
       },
       error: (err) => {
-        console.error('Error loading users:', err);
+        console.error('Error loading schedule:', err);
         this.loading = false;
       }
     });
   }
 
-  getSeverity(inStock: boolean): 'success' | 'danger' {
-    return inStock ? 'success' : 'danger';
+  checkSystemTheme() {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) {
+      this.toggleTheme();
+    }
+  }
+
+  toggleTheme() {
+    this.isDarkMode.update(value => !value);
+    const element = document.documentElement;
+    
+    if (this.isDarkMode()) {
+      element.classList.add('dark-mode');
+    } else {
+      element.classList.remove('dark-mode');
+    }
+  }
+
+  getLevelSeverity(level: string): 'success' | 'info' | 'warn' {
+    switch (level.toLowerCase()) {
+      case 'beginner': return 'success';
+      case 'intermediate': return 'info';
+      case 'advanced': return 'warn';
+      default: return 'info';
+    }
   }
 }

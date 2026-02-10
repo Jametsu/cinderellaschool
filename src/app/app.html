@@ -1,136 +1,247 @@
-<div class="container">
-  <header class="header">
-    <h1>{{ title }}</h1>
-    <p class="subtitle">A modern Angular application with PrimeNG components</p>
+<div class="dance-school-site">
+  <!-- Header with Theme Toggle -->
+  <header class="site-header">
+    <div class="header-content">
+      <div class="logo-section">
+        <h1>{{ schoolInfo?.schoolName || 'Dance Academy' }}</h1>
+        <p class="tagline">{{ schoolInfo?.tagline }}</p>
+      </div>
+      <div class="header-actions">
+        <p-button 
+          [icon]="isDarkMode() ? 'pi pi-sun' : 'pi pi-moon'" 
+          [label]="isDarkMode() ? 'Light' : 'Dark'"
+          (onClick)="toggleTheme()"
+          [outlined]="true"
+          size="small" />
+      </div>
+    </div>
   </header>
 
-  <p-tabs>
-    <p-tablist>
-      <p-tab value="0">Products</p-tab>
-      <p-tab value="1">Users</p-tab>
-      <p-tab value="2">About</p-tab>
-    </p-tablist>
+  <!-- Main Content -->
+  <main class="main-content">
+    <p-tabs [value]="0">
+      <p-tablist>
+        <p-tab [value]="0">
+          <i class="pi pi-home"></i>
+          <span class="tab-label">Home</span>
+        </p-tab>
+        <p-tab [value]="1">
+          <i class="pi pi-calendar"></i>
+          <span class="tab-label">Schedule</span>
+        </p-tab>
+        <p-tab [value]="2">
+          <i class="pi pi-book"></i>
+          <span class="tab-label">Courses</span>
+        </p-tab>
+        <p-tab [value]="3">
+          <i class="pi pi-phone"></i>
+          <span class="tab-label">Contact</span>
+        </p-tab>
+      </p-tablist>
 
-    <p-tabpanels>
-      <p-tabpanel value="0">
-        <div class="content-section">
-          <p-card>
-            <ng-template pTemplate="header">
-              <div class="card-header">
-                <h2>Product Catalog</h2>
-                <p-button label="Refresh" icon="pi pi-refresh" (onClick)="loadData()" />
-              </div>
-            </ng-template>
-            
-            <p-table [value]="products" [loading]="loading" styleClass="p-datatable-striped">
+      <p-tabpanels>
+        <!-- Home Tab -->
+        <p-tabpanel [value]="0">
+          <div class="home-section">
+            <p-card>
               <ng-template pTemplate="header">
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Category</th>
-                  <th>Price</th>
-                  <th>Rating</th>
-                  <th>Stock Status</th>
-                </tr>
+                <div class="hero-header">
+                  <h2>Welcome to Our Dance Academy</h2>
+                </div>
               </ng-template>
-              <ng-template pTemplate="body" let-product>
-                <tr>
-                  <td>{{ product.id }}</td>
-                  <td><strong>{{ product.name }}</strong></td>
-                  <td>{{ product.description }}</td>
-                  <td>{{ product.category }}</td>
-                  <td>{{ product.price | currency }}</td>
-                  <td>
-                    <i class="pi pi-star-fill" style="color: #ffd700"></i> {{ product.rating }}
-                  </td>
-                  <td>
+              
+              <div class="about-content">
+                <p class="about-text">{{ schoolInfo?.about }}</p>
+                
+                <div class="info-grid">
+                  <div class="info-card">
+                    <i class="pi pi-clock info-icon"></i>
+                    <h3>Opening Hours</h3>
+                    <div class="info-details">
+                      <p><strong>Mon-Fri:</strong> {{ schoolInfo?.hours?.weekdays }}</p>
+                      <p><strong>Saturday:</strong> {{ schoolInfo?.hours?.saturday }}</p>
+                      <p><strong>Sunday:</strong> {{ schoolInfo?.hours?.sunday }}</p>
+                    </div>
+                  </div>
+                  
+                  <div class="info-card">
+                    <i class="pi pi-map-marker info-icon"></i>
+                    <h3>Location</h3>
+                    <div class="info-details">
+                      <p>{{ schoolInfo?.address?.street }}</p>
+                      <p>{{ schoolInfo?.address?.postalCode }} {{ schoolInfo?.address?.city }}</p>
+                      <p>{{ schoolInfo?.address?.country }}</p>
+                    </div>
+                  </div>
+                  
+                  <div class="info-card">
+                    <i class="pi pi-users info-icon"></i>
+                    <h3>Why Choose Us</h3>
+                    <div class="info-details">
+                      <p>✓ Expert Instructors</p>
+                      <p>✓ All Skill Levels</p>
+                      <p>✓ Modern Studios</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </p-card>
+          </div>
+        </p-tabpanel>
+
+        <!-- Schedule Tab -->
+        <p-tabpanel [value]="1">
+          <div class="schedule-section">
+            <p-card>
+              <ng-template pTemplate="header">
+                <div class="card-header">
+                  <h2>Weekly Schedule</h2>
+                </div>
+              </ng-template>
+              
+              <div class="schedule-grid">
+                <div *ngFor="let day of schedule" class="day-schedule">
+                  <h3 class="day-name">{{ day.day }}</h3>
+                  <div class="classes-list">
+                    <div *ngFor="let class of day.classes" class="class-item">
+                      <div class="class-time">
+                        <i class="pi pi-clock"></i>
+                        {{ class.time }}
+                      </div>
+                      <div class="class-details">
+                        <h4>{{ class.course }}</h4>
+                        <p class="instructor">{{ class.instructor }}</p>
+                        <p class="room">{{ class.room }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </p-card>
+          </div>
+        </p-tabpanel>
+
+        <!-- Courses Tab -->
+        <p-tabpanel [value]="2">
+          <div class="courses-section">
+            <p-card>
+              <ng-template pTemplate="header">
+                <div class="card-header">
+                  <h2>Our Courses</h2>
+                </div>
+              </ng-template>
+              
+              <div class="courses-grid">
+                <div *ngFor="let course of courses" class="course-card">
+                  <div class="course-header">
+                    <h3>{{ course.name }}</h3>
                     <p-tag 
-                      [value]="product.inStock ? 'In Stock' : 'Out of Stock'" 
-                      [severity]="getSeverity(product.inStock)" />
-                  </td>
-                </tr>
-              </ng-template>
-            </p-table>
-          </p-card>
-        </div>
-      </p-tabpanel>
-
-      <p-tabpanel value="1">
-        <div class="content-section">
-          <p-card>
-            <ng-template pTemplate="header">
-              <div class="card-header">
-                <h2>User Directory</h2>
-                <p-button label="Refresh" icon="pi pi-refresh" (onClick)="loadData()" />
+                      [value]="course.level" 
+                      [severity]="getLevelSeverity(course.level)" />
+                  </div>
+                  <div class="course-body">
+                    <p class="course-description">{{ course.description }}</p>
+                    <div class="course-info">
+                      <div class="info-item">
+                        <i class="pi pi-user"></i>
+                        <span>{{ course.instructor }}</span>
+                      </div>
+                      <div class="info-item">
+                        <i class="pi pi-clock"></i>
+                        <span>{{ course.duration }}</span>
+                      </div>
+                      <div class="info-item">
+                        <i class="pi pi-euro"></i>
+                        <span>{{ course.price }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="course-footer">
+                    <p-button label="Enroll Now" icon="pi pi-check" size="small" />
+                  </div>
+                </div>
               </div>
-            </ng-template>
-            
-            <p-table [value]="users" [loading]="loading" styleClass="p-datatable-striped">
+            </p-card>
+          </div>
+        </p-tabpanel>
+
+        <!-- Contact Tab -->
+        <p-tabpanel [value]="3">
+          <div class="contact-section">
+            <p-card>
               <ng-template pTemplate="header">
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Joined Date</th>
-                </tr>
+                <div class="card-header">
+                  <h2>Get in Touch</h2>
+                </div>
               </ng-template>
-              <ng-template pTemplate="body" let-user>
-                <tr>
-                  <td>{{ user.id }}</td>
-                  <td><strong>{{ user.name }}</strong></td>
-                  <td>{{ user.email }}</td>
-                  <td>
-                    <p-tag [value]="user.role" severity="info" />
-                  </td>
-                  <td>{{ user.joinedDate }}</td>
-                </tr>
-              </ng-template>
-            </p-table>
-          </p-card>
-        </div>
-      </p-tabpanel>
-
-      <p-tabpanel value="2">
-        <div class="content-section">
-          <p-card>
-            <ng-template pTemplate="header">
-              <div class="card-header">
-                <h2>About This Project</h2>
+              
+              <div class="contact-grid">
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <i class="pi pi-phone contact-icon"></i>
+                    <div>
+                      <h3>Phone</h3>
+                      <a [href]="'tel:' + schoolInfo?.contact?.phone">{{ schoolInfo?.contact?.phone }}</a>
+                    </div>
+                  </div>
+                  
+                  <div class="contact-item">
+                    <i class="pi pi-envelope contact-icon"></i>
+                    <div>
+                      <h3>Email</h3>
+                      <a [href]="'mailto:' + schoolInfo?.contact?.email">{{ schoolInfo?.contact?.email }}</a>
+                    </div>
+                  </div>
+                  
+                  <div class="contact-item">
+                    <i class="pi pi-whatsapp contact-icon"></i>
+                    <div>
+                      <h3>WhatsApp</h3>
+                      <a [href]="'https://wa.me/' + schoolInfo?.contact?.whatsapp?.replace(/[^0-9]/g, '')">
+                        {{ schoolInfo?.contact?.whatsapp }}
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div class="contact-item">
+                    <i class="pi pi-map-marker contact-icon"></i>
+                    <div>
+                      <h3>Address</h3>
+                      <p>{{ schoolInfo?.address?.street }}<br>
+                         {{ schoolInfo?.address?.postalCode }} {{ schoolInfo?.address?.city }}<br>
+                         {{ schoolInfo?.address?.country }}</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="social-media">
+                  <h3>Follow Us</h3>
+                  <div class="social-links">
+                    <a [href]="'https://instagram.com/' + schoolInfo?.social?.instagram" target="_blank" class="social-link">
+                      <i class="pi pi-instagram"></i>
+                      <span>{{ schoolInfo?.social?.instagram }}</span>
+                    </a>
+                    <a [href]="'https://facebook.com/' + schoolInfo?.social?.facebook" target="_blank" class="social-link">
+                      <i class="pi pi-facebook"></i>
+                      <span>{{ schoolInfo?.social?.facebook }}</span>
+                    </a>
+                    <a [href]="'https://youtube.com/' + schoolInfo?.social?.youtube" target="_blank" class="social-link">
+                      <i class="pi pi-youtube"></i>
+                      <span>{{ schoolInfo?.social?.youtube }}</span>
+                    </a>
+                  </div>
+                </div>
               </div>
-            </ng-template>
-            
-            <div class="about-content">
-              <h3>Technology Stack</h3>
-              <ul>
-                <li><strong>Angular:</strong> Latest version (21.1) with standalone components</li>
-                <li><strong>PrimeNG:</strong> Latest version (21.1) with Aura theme</li>
-                <li><strong>Backend:</strong> Simple JSON files for data storage</li>
-                <li><strong>Deployment:</strong> GitHub Pages with angular-cli-ghpages</li>
-              </ul>
+            </p-card>
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+  </main>
 
-              <h3>Features</h3>
-              <ul>
-                <li>Product catalog with detailed information</li>
-                <li>User directory with role management</li>
-                <li>Responsive design with PrimeNG components</li>
-                <li>Data loading from JSON files</li>
-              </ul>
-
-              <div class="button-group">
-                <p-button label="View on GitHub" icon="pi pi-github" styleClass="p-button-outlined" />
-                <p-button label="Documentation" icon="pi pi-book" styleClass="p-button-outlined" />
-              </div>
-            </div>
-          </p-card>
-        </div>
-      </p-tabpanel>
-    </p-tabpanels>
-  </p-tabs>
-
-  <footer class="footer">
-    <p>Built with Angular 21.1 and PrimeNG 21.1</p>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2026 {{ schoolInfo?.schoolName }}. Built with Angular 21 & PrimeNG 21</p>
   </footer>
 </div>
 

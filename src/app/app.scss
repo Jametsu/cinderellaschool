@@ -1,100 +1,465 @@
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 2rem;
-  
-  h1 {
-    font-size: 2.5rem;
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
-  }
-  
-  .subtitle {
-    color: #7f8c8d;
-    font-size: 1.1rem;
-  }
-}
-
-.content-section {
-  margin: 1rem 0;
-}
-
-.card-header {
+// Mobile-first responsive design
+.dance-school-site {
+  min-height: 100vh;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+}
+
+// Header
+.site-header {
+  background: var(--p-primary-color);
+  color: white;
   padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   
-  h2 {
-    margin: 0;
-    color: #2c3e50;
+  .header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .logo-section {
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .tagline {
+      margin: 0.25rem 0 0;
+      opacity: 0.9;
+      font-size: 0.875rem;
+    }
+  }
+  
+  .header-actions {
+    display: flex;
+    gap: 0.5rem;
   }
 }
 
-.about-content {
-  h3 {
-    color: #2c3e50;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
+// Main Content
+.main-content {
+  flex: 1;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+// Tabs - Hide text labels on mobile
+.tab-label {
+  display: none;
+}
+
+// Home Section
+.home-section {
+  .hero-header {
+    padding: 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--p-primary-color), var(--p-primary-600));
+    color: white;
+    border-radius: 8px 8px 0 0;
+    
+    h2 {
+      margin: 0;
+      font-size: 1.75rem;
+    }
   }
   
-  ul {
+  .about-text {
     line-height: 1.8;
-    color: #34495e;
+    margin-bottom: 2rem;
+  }
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .info-card {
+    padding: 1.5rem;
+    border: 1px solid var(--p-surface-border);
+    border-radius: 8px;
+    text-align: center;
     
-    li {
-      margin-bottom: 0.5rem;
+    .info-icon {
+      font-size: 2rem;
+      color: var(--p-primary-color);
+      margin-bottom: 1rem;
+    }
+    
+    h3 {
+      margin: 0 0 1rem;
+      color: var(--p-text-color);
+    }
+    
+    .info-details {
+      color: var(--p-text-secondary-color);
       
-      strong {
-        color: #2c3e50;
+      p {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+}
+
+// Schedule Section
+.schedule-section {
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .day-schedule {
+    .day-name {
+      background: var(--p-primary-color);
+      color: white;
+      padding: 0.75rem 1rem;
+      margin: 0 0 1rem;
+      border-radius: 6px;
+      font-size: 1.1rem;
+    }
+    
+    .classes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .class-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      border: 1px solid var(--p-surface-border);
+      border-radius: 6px;
+      background: var(--p-surface-50);
+      
+      .class-time {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--p-primary-color);
+        font-weight: 600;
+        min-width: 120px;
+        font-size: 0.875rem;
+      }
+      
+      .class-details {
+        flex: 1;
+        
+        h4 {
+          margin: 0 0 0.25rem;
+          color: var(--p-text-color);
+          font-size: 1rem;
+        }
+        
+        .instructor {
+          margin: 0.25rem 0;
+          color: var(--p-text-secondary-color);
+          font-size: 0.875rem;
+        }
+        
+        .room {
+          margin: 0;
+          color: var(--p-text-muted-color);
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+}
+
+// Courses Section
+.courses-section {
+  .courses-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .course-card {
+    border: 1px solid var(--p-surface-border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--p-surface-card);
+    display: flex;
+    flex-direction: column;
+    
+    .course-header {
+      padding: 1.25rem;
+      background: var(--p-surface-100);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      
+      h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: var(--p-text-color);
+      }
+    }
+    
+    .course-body {
+      padding: 1.25rem;
+      flex: 1;
+      
+      .course-description {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        color: var(--p-text-secondary-color);
+      }
+      
+      .course-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        
+        .info-item {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: var(--p-text-secondary-color);
+          font-size: 0.9rem;
+          
+          i {
+            color: var(--p-primary-color);
+          }
+        }
+      }
+    }
+    
+    .course-footer {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid var(--p-surface-border);
+    }
+  }
+}
+
+// Contact Section
+.contact-section {
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      
+      .contact-icon {
+        font-size: 1.75rem;
+        color: var(--p-primary-color);
+        min-width: 40px;
+      }
+      
+      h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1rem;
+        color: var(--p-text-color);
+      }
+      
+      a {
+        color: var(--p-primary-color);
+        text-decoration: none;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      
+      p {
+        margin: 0;
+        color: var(--p-text-secondary-color);
+        line-height: 1.6;
       }
     }
   }
   
-  .button-group {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+  .social-media {
+    padding: 1.5rem;
+    background: var(--p-surface-100);
+    border-radius: 8px;
+    
+    h3 {
+      margin: 0 0 1rem;
+      color: var(--p-text-color);
+    }
+    
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        border: 1px solid var(--p-surface-border);
+        border-radius: 6px;
+        background: var(--p-surface-card);
+        color: var(--p-text-color);
+        text-decoration: none;
+        transition: all 0.2s;
+        
+        &:hover {
+          background: var(--p-surface-hover);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        i {
+          font-size: 1.5rem;
+          color: var(--p-primary-color);
+        }
+      }
+    }
   }
 }
 
-.footer {
+// Footer
+.site-footer {
+  background: var(--p-surface-100);
+  padding: 1.5rem;
   text-align: center;
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid #e0e0e0;
-  color: #7f8c8d;
+  color: var(--p-text-secondary-color);
+  border-top: 1px solid var(--p-surface-border);
+  margin-top: 2rem;
+  
+  p {
+    margin: 0;
+  }
 }
 
-:host ::ng-deep {
-  .p-tabview {
-    .p-tabview-panels {
-      padding: 1rem 0;
+// Card Headers
+.card-header {
+  padding: 1.25rem;
+  background: var(--p-primary-color);
+  color: white;
+  
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+}
+
+// Responsive Breakpoints
+
+// Tablet (768px and up)
+@media (min-width: 768px) {
+  .site-header {
+    padding: 1.5rem;
+    
+    .logo-section h1 {
+      font-size: 2rem;
+    }
+    
+    .tagline {
+      font-size: 1rem;
     }
   }
   
-  .p-datatable {
-    .p-datatable-thead > tr > th {
-      background-color: #f8f9fa;
-      color: #2c3e50;
-      font-weight: 600;
+  .main-content {
+    padding: 2rem;
+  }
+  
+  .tab-label {
+    display: inline;
+    margin-left: 0.5rem;
+  }
+  
+  .home-section {
+    .hero-header h2 {
+      font-size: 2.5rem;
+    }
+    
+    .info-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
     }
   }
   
-  .p-card {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    
-    .p-card-header {
-      padding: 0;
+  .schedule-section {
+    .schedule-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
     
-    .p-card-body {
-      padding: 1.25rem;
+    .class-item {
+      .class-time {
+        min-width: 140px;
+      }
     }
+  }
+  
+  .courses-section {
+    .courses-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .contact-section {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+// Desktop (1024px and up)
+@media (min-width: 1024px) {
+  .home-section {
+    .info-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .schedule-section {
+    .schedule-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .courses-section {
+    .courses-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+// Large Desktop (1440px and up)
+@media (min-width: 1440px) {
+  .schedule-section {
+    .schedule-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+// Dark Mode Specific Overrides
+:host-context(.dark-mode) {
+  .site-header {
+    background: var(--p-primary-600);
+  }
+  
+  .hero-header {
+    background: linear-gradient(135deg, var(--p-primary-600), var(--p-primary-700)) !important;
+  }
+  
+  .class-item {
+    background: var(--p-surface-100);
   }
 }
